@@ -39,10 +39,7 @@ export default function PhotoCard(props) {
         <MDBCardBody>
           <MDBCardTitle>{props.title}</MDBCardTitle>
           <MDBCardText>{props.text}</MDBCardText>
-          {/* <MDBBtn color="danger" onClick={toggleFavoriteStatusHandler}>
-            <MDBIcon fas icon="heart" />
-            &nbsp;&nbsp;{photoIsLiked ? "Unlike" : "Like"}
-          </MDBBtn> */}
+
           {photoIsLiked && (
             <MDBBtn color="light" onClick={toggleFavoriteStatusHandler}>
               <MDBIcon fas icon="heart" color="danger" />

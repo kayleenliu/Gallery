@@ -21,8 +21,6 @@ export default function AddForm(props) {
       text: enteredDes,
     };
 
-    console.log(photoData);
-
     props.onAddPhoto(photoData);
   }
 
@@ -37,16 +35,16 @@ export default function AddForm(props) {
         }}
       >
         <MDBCardBody>
-          <MDBCardTitle>Add Your New Photo Here</MDBCardTitle>
+          <center>
+            <MDBCardTitle>Add Your New Photo Here</MDBCardTitle>
+          </center>
+
           <Form onSubmit={submitHandler}>
-            <FloatingLabel
-              controlId="floatingTitle"
-              label="Photo Title"
-              className="mb-3"
-            >
+            <FloatingLabel controlId="floatingTitle" label="Photo Title">
               <Form.Control
                 type="text"
                 placeholder="Photo Title"
+                className="mb-3"
                 required
                 ref={titleInputRef}
               />
@@ -55,15 +53,16 @@ export default function AddForm(props) {
               <Form.Control
                 type="url"
                 placeholder="Photo URL"
+                className="mb-3"
                 required
                 ref={urlInputRef}
               />
             </FloatingLabel>
-            <br></br>
             <FloatingLabel controlId="floatingDes" label="Description">
               <Form.Control
                 as="textarea"
                 placeholder="Description"
+                className="mb-3"
                 style={{ height: "100px" }}
                 required
                 ref={desInputRef}
@@ -71,7 +70,7 @@ export default function AddForm(props) {
             </FloatingLabel>
             <br></br>
             <center>
-              <MDBBtn>Submit</MDBBtn>
+              <MDBBtn color="success">Submit</MDBBtn>
             </center>
           </Form>
         </MDBCardBody>

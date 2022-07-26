@@ -6,10 +6,9 @@ export default function PhotoList(props) {
     <>
       {props.photos.map((photo) => (
         <>
-          <MDBRow>
+          <MDBRow key={photo.id}>
             <MDBCol>
               <PhotoCard
-                key={photo.id}
                 id={photo.id}
                 title={photo.title}
                 url={photo.url}

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import FavoritesContext from "../store/favorites-context";
 import {
   MDBNavbar,
   MDBContainer,
@@ -7,33 +9,50 @@ import {
   MDBNavbarLink,
   MDBCollapse,
   MDBNavbarNav,
+  MDBNavbarToggler,
+  MDBIcon,
 } from "mdb-react-ui-kit";
 
 export default function MyNav() {
   const [showNavNoTogglerSecond, setShowNavNoTogglerSecond] = useState(false);
+  const favoritesCtx = useContext(FavoritesContext);
 
   return (
     <>
       <MDBNavbar expand="lg" light bgColor="light">
         <MDBContainer fluid>
-          <MDBNavbarBrand href="#">My Gallery</MDBNavbarBrand>
+          <MDBNavbarBrand>My Gallery</MDBNavbarBrand>
+          <MDBNavbarToggler
+            type="button"
+            data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            onClick={() => setShowNavNoTogglerSecond(!showNavNoTogglerSecond)}
+          >
+            <MDBIcon icon="bars" fas />
+          </MDBNavbarToggler>
           <MDBCollapse navbar show={showNavNoTogglerSecond}>
             <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
               <MDBNavbarItem>
-                <MDBNavbarLink aria-current="page" href="/">
-                  Home
+                <MDBNavbarLink aria-current="page">
+                  <Link to="/" style={{ color: "grey" }}>
+                    Home
+                  </Link>
                 </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink href="add">Add New Picture</MDBNavbarLink>
+                <MDBNavbarLink aria-current="page">
+                  <Link to="/add" style={{ color: "grey" }}>
+                    New Photo
+                  </Link>
+                </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink
-                  href="/favorites"
-                  tabIndex={-1}
-                  aria-disabled="true"
-                >
-                  Favorites
+                <MDBNavbarLink>
+                  <Link to="/favorites" style={{ color: "grey" }}>
+                    Favorites (<span>{favoritesCtx.totalFavorites}</span>)
+                  </Link>
                 </MDBNavbarLink>
               </MDBNavbarItem>
             </MDBNavbarNav>

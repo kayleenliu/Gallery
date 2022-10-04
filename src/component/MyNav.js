@@ -19,7 +19,7 @@ export default function MyNav() {
 
   return (
     <>
-      <MDBNavbar expand="lg" light bgColor="light">
+      <MDBNavbar sticky expand="lg" light bgColor="light">
         <MDBContainer fluid>
           <MDBNavbarBrand>My Gallery</MDBNavbarBrand>
           <MDBNavbarToggler
